@@ -9,4 +9,11 @@ import { Form, NgForm } from '@angular/forms';
 export class AppComponent {
   title = 'angularCRM';
 
+  received($event:any){
+    console.log($event)
+  }
+  received2($event:any){
+    console.log(`it was ${$event}`)
+  }
+
 }
