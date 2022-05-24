@@ -1,19 +1,3 @@
-{{title}}
-
-<div [ngClass]="myCssClass">
-  {{fruit}}
-</div>
-<button (click)="change($event)">Click me</button>
-
-<ul>
-  <li *ngFor="let name of names; let i=index">
-    {{i+1}} {{name}}
-  </li>
-</ul>
-
-<form #carForm="ngForm" (ngSubmit)="validateForm(carForm)">
-  <input type="text" name="car" [(ngModel)]="car">
-  <button type="submit">validate</button>
-</form>
+<span>{{title}}</span>
 
 <crm-login></crm-login>
