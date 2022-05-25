@@ -1,0 +1,20 @@
+<input (keyup)="onSearch()" [(ngModel)]="searchField">
+
+<table>
+  <thead>
+    <th>civility</th>
+    <th>firstname</th>
+    <th>lastname</th>
+    <th>pho|phonene</th>
+    <th>email</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let consumer of consumers">
+      <td>{{consumer.civility}}</td>
+      <td>{{consumer.firstname}}</td>
+      <td>{{consumer.lastname}}</td>
+      <td>{{consumer.phone|phone}}</td>
+      <td>{{consumer.email}}</td>
+    </tr>
+  </tbody>
+</table>
