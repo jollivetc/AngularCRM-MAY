@@ -1,11 +1,11 @@
 <input (keyup)="onSearch()" [(ngModel)]="searchField">
-
+<a mat-icon-button [routerLink]="'/person'"><mat-icon>person_add</mat-icon></a>
 <table>
   <thead>
     <th>civility</th>
     <th>firstname</th>
     <th>lastname</th>
-    <th>pho|phonene</th>
+    <th>phone</th>
     <th>email</th>
   </thead>
   <tbody>

@@ -33,7 +33,6 @@ export class ConsumerListeComponent implements OnInit, OnDestroy {
   }
 
   onSearch():void{
-    console.log(this.searchField)
     this.doSearch(this.searchField);
   }
 

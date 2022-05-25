@@ -13,4 +13,8 @@ export class ConsumerService {
   find(query:string):Observable<Consumer[]>{
     return this.http.get<Array<Consumer>>(`/api/consumers?q=${query}`);
   }
+
+  save(consumer:Consumer):Observable<Consumer>{
+    return this.http.post<Consumer>('/api/consumers', consumer);
+  }
 }
