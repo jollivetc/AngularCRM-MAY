@@ -7,6 +7,7 @@
     <th>lastname</th>
     <th>phone</th>
     <th>email</th>
+    <th>command</th>
   </thead>
   <tbody>
     <tr *ngFor="let consumer of consumers">
@@ -15,6 +16,14 @@
       <td>{{consumer.lastname}}</td>
       <td>{{consumer.phone|phone}}</td>
       <td>{{consumer.email}}</td>
+      <td>
+        <a mat-icon-button [routerLink]="['/person',consumer.id]">
+          <mat-icon>edit</mat-icon>
+        </a>
+        <a mat-icon-button (click)="delete(consumer.id!)">
+          <mat-icon>delete</mat-icon>
+        </a>
+      </td>
     </tr>
   </tbody>
 </table>

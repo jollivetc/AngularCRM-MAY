@@ -36,4 +36,10 @@ export class ConsumerListeComponent implements OnInit, OnDestroy {
     this.doSearch(this.searchField);
   }
 
+  delete(id:number){
+    this.subs.push(this.consumerService.delete(id).subscribe({
+      next: (data:any)=>{this.doSearch()},
+      error:(error:Error)=>{console.error(error)}
+    }));
+  }
 }
