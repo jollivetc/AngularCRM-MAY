@@ -1,15 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthenticationService } from './authentication.service';
+import { User } from './model/user';
 
 @Component({
   selector: 'crm-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
+  private subs:Subscription[]=[];
   loginForm : FormGroup;
   errorLogin={
     required:'un login est requis',
@@ -25,13 +28,17 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  ngOnDestroy(): void {
+    this.subs.forEach(sub=>sub.unsubscribe());
+  }
 
   onSubmit():void{
-    const user = this.authent.authentUser(this.loginForm.get('login')?.value, this.loginForm.get('password')?.value);
-    console.log(user);
-    if(user){
-      this.router.navigateByUrl('/home');
-    }
+    this.subs.push(this.authent.authentUser(this.loginForm.get('login')?.value, this.loginForm.get('password')?.value)
+          .subscribe({
+            next: (user:User)=>{this.router.navigateByUrl('/home')},
+            error: (error:Error)=>{alert(error.message)},
+            complete:()=>{}
+          }));
   }
 }
 
